@@ -1,0 +1,10 @@
+wordpress -->  OOD
+
+OCP - open to extension, close to modification
+DIP - Dependency inversion.  High level logic should not depend on low level implementation.  They both should depond on abstraction
+LSP - Substituation Principle.  Sub class has to be able to be substituated to its base class
+SRP - Single Responsibility.  One class should have only one reason to change
+ISP - Interface segregation.  Clients should not be forced to have dependencies on interfaces that they dont use
+LoD - Last Knowledge principle. Reduce dependencies among classes.  Class should only talk to its immediate friends
+CARP - Composite/Aggregate reuse principle.  Favor object composition over class inheritance
+
