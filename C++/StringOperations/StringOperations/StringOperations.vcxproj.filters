@@ -18,5 +18,8 @@
     <ClCompile Include="Substring.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StringRevert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

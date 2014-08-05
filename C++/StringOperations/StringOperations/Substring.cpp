@@ -40,6 +40,7 @@ int getSubstring(const char* originalString, const char* pattern)
 	return -1;
 }
 
+/*
 int main()
 {
 	const char* original = "hello world";
@@ -51,3 +52,4 @@ int main()
 
 	return 0;
 }
+*/
