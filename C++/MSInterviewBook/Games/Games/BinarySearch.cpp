@@ -31,6 +31,7 @@ int BinarySearchIterative(char* str, char target, int startIndex, int endIndex)
 	return -1;
 }
 
+/*
 int main()
 {
 	char* str = "123456789";
@@ -40,3 +41,4 @@ int main()
 	system("pause");
 	return 0;
 }
+*/

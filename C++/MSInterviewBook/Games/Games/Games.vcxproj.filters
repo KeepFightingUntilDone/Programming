@@ -24,5 +24,8 @@
     <ClCompile Include="BinarySearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DrinksMaxSatisfication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

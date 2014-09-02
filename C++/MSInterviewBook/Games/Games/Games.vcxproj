@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClCompile Include="BinarySearch.cpp" />
     <ClCompile Include="ChineseChess.cpp" />
+    <ClCompile Include="DrinksMaxSatisfication.cpp" />
     <ClCompile Include="LaoBingSort.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

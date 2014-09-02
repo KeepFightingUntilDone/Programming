@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 
 /*
 Description of the Question
@@ -22,8 +23,78 @@ struct Drink
 	int max_amount;
 };
 
+std::vector<Drink> InitiazeDrinks()
+{
+	Drink lvcha;
+	lvcha.name = "绿茶";
+	lvcha.volume = 8;
+	lvcha.satification = 20;
+	lvcha.max_amount = 10;
+
+	Drink wanglaoji;
+	wanglaoji.name = "王老吉";
+	wanglaoji.volume = 16;
+	wanglaoji.satification = 30;
+	wanglaoji.max_amount = 20;
+
+	Drink coca;
+	coca.name = "可乐";
+	coca.volume = 32;
+	coca.satification = 24;
+	coca.max_amount = 16;
+
+	Drink wahaha;
+	wahaha.name = "哇哈哈";
+	wahaha.volume = 8;
+	wahaha.satification = 20;
+	wahaha.max_amount = 16;
+
+	Drink xuebi;
+	xuebi.name = "雪碧";
+	xuebi.volume = 32;
+	xuebi.satification = 48;
+	xuebi.max_amount = 16;
+
+	Drink yefeng;
+	yefeng.name = "椰风";
+	yefeng.volume = 8;
+	yefeng.satification = 16;
+	yefeng.max_amount = 32;
+
+	Drink lulu;
+	lulu.name = "露露";
+	lulu.volume = 16;
+	lulu.satification = 24;
+	lulu.max_amount = 16;
+
+	Drink cofe;
+	cofe.name = "咖啡";
+	cofe.volume = 16;
+	cofe.satification = 32;
+	cofe.max_amount = 48;
+
+	std::vector<Drink> drinks;
+	drinks.push_back(lvcha);
+	drinks.push_back(coca);
+	drinks.push_back(cofe);
+	drinks.push_back(wahaha);
+	drinks.push_back(wanglaoji);
+	drinks.push_back(xuebi);
+	drinks.push_back(yefeng);
+	drinks.push_back(lulu);
+
+	return drinks;
+}
+
+void GetMaxSatification(std::vector<Drink> drinks)
+{
+
+}
+
 int main()
 {
+	std::vector<Drink> drinks = InitiazeDrinks();
+	GetMaxSatification(drinks);
 
 	system("pause");
 	return 0;
