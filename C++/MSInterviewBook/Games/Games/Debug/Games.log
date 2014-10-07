@@ -1,10 +1,15 @@
-﻿Build started 8/11/2014 11:16:52 PM.
+﻿Build started 10/6/2014 7:21:26 PM.
      1>Project "C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Games\Games.vcxproj" on node 2 (Build target(s)).
+       Project file contains ToolsVersion="12.0". This toolset is unknown or missing. You may be able to resolve this by installing the appropriate .NET Framework for this toolset. Treating the project as if it had ToolsVersion="4.0".
      1>ClCompile:
-         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BinarySearch.cpp
+         E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt BinarySearch.cpp DrinksMaxSatisfication.cpp
+         DrinksMaxSatisfication.cpp
+     1>c:\users\milin\documents\github\programming\c++\msinterviewbook\games\games\drinksmaxsatisfication.cpp(122): warning C4018: '<=' : signed/unsigned mismatch
+     1>c:\users\milin\documents\github\programming\c++\msinterviewbook\games\games\drinksmaxsatisfication.cpp(161): warning C4018: '<=' : signed/unsigned mismatch
          BinarySearch.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Debug\Games.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Debug\Games.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Debug\Games.lib" /MACHINE:X86 Debug\BinarySearch.obj
+         E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Debug\Games.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Debug\Games.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\milin\Documents\GitHub\Programming\C++\MSInterviewBook\Games\Debug\Games.lib" /MACHINE:X86 Debug\BinarySearch.obj
          Debug\ChineseChess.obj
          Debug\DrinksMaxSatisfication.obj
          Debug\LaoBingSort.obj
@@ -13,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.79
+Time Elapsed 00:00:04.24

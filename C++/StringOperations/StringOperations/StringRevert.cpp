@@ -20,6 +20,7 @@ string revertString(string input)
 	return string(begin);
 }
 
+/*
 int main()
 {
 	string input = "qianshanwanshui";
@@ -30,3 +31,4 @@ int main()
 
 	return 0;
 }
+*/

@@ -16,7 +16,7 @@ Description of the Question
 
 struct Drink
 {
-	std::string name;
+	char* name;
 	int volume;
 	int amount;
 	int satification;
@@ -26,52 +26,52 @@ struct Drink
 std::vector<Drink> InitiazeDrinks()
 {
 	Drink lvcha;
-	lvcha.name = "绿茶";
-	lvcha.volume = 8;
-	lvcha.satification = 20;
-	lvcha.max_amount = 10;
+	lvcha.name = "lvcha";
+	lvcha.volume = 1;
+	lvcha.satification = 400;
+	lvcha.max_amount = 2;
 
 	Drink wanglaoji;
-	wanglaoji.name = "王老吉";
-	wanglaoji.volume = 16;
+	wanglaoji.name = "wanglaoji";
+	wanglaoji.volume = 3;
 	wanglaoji.satification = 30;
-	wanglaoji.max_amount = 20;
+	wanglaoji.max_amount = 2;
 
 	Drink coca;
-	coca.name = "可乐";
-	coca.volume = 32;
+	coca.name = "kele";
+	coca.volume = 1;
 	coca.satification = 24;
-	coca.max_amount = 16;
+	coca.max_amount = 1;
 
 	Drink wahaha;
-	wahaha.name = "哇哈哈";
-	wahaha.volume = 8;
+	wahaha.name = "wahaha";
+	wahaha.volume = 1;
 	wahaha.satification = 20;
-	wahaha.max_amount = 16;
+	wahaha.max_amount = 2;
 
 	Drink xuebi;
-	xuebi.name = "雪碧";
-	xuebi.volume = 32;
+	xuebi.name = "xuebi";
+	xuebi.volume = 2;
 	xuebi.satification = 48;
-	xuebi.max_amount = 16;
+	xuebi.max_amount = 1;
 
 	Drink yefeng;
-	yefeng.name = "椰风";
-	yefeng.volume = 8;
+	yefeng.name = "yefeng";
+	yefeng.volume = 1;
 	yefeng.satification = 16;
-	yefeng.max_amount = 32;
+	yefeng.max_amount = 2;
 
 	Drink lulu;
-	lulu.name = "露露";
-	lulu.volume = 16;
+	lulu.name = "lulu";
+	lulu.volume = 2;
 	lulu.satification = 24;
-	lulu.max_amount = 16;
+	lulu.max_amount = 1;
 
 	Drink cofe;
-	cofe.name = "咖啡";
-	cofe.volume = 16;
+	cofe.name = "cofe";
+	cofe.volume = 2;
 	cofe.satification = 32;
-	cofe.max_amount = 48;
+	cofe.max_amount = 2;
 
 	std::vector<Drink> drinks;
 	drinks.push_back(lvcha);
@@ -88,7 +88,100 @@ std::vector<Drink> InitiazeDrinks()
 
 void GetMaxSatification(std::vector<Drink> drinks)
 {
+	const int VolumeLimit = 10;
 
+	/*****
+	// For better understanding, use separate arrays to store each property of the items
+
+	int* V = new int[drinks.size()];  //Volume array
+	int* S = new int[drinks.size()];  //Satification array
+	int* N = new int[drinks.size()];  //Amount array
+
+	for (int i = 0; i < drinks.size(); i++)
+	{
+		V[i] = drinks[i].volume;
+		S[i] = drinks[i].satification;
+		N[i] = drinks[i].max_amount;
+	}
+	*/
+
+	// Give both drinks and volumes an additional space for boundaries
+	int (*MS)[VolumeLimit + 1] = new int[drinks.size() + 1][VolumeLimit + 1]; 
+	int (*path)[VolumeLimit + 1] = new int[drinks.size() + 1][VolumeLimit + 1];
+	memset(MS, 0, (drinks.size() + 1) * (VolumeLimit + 1));
+	memset(path, 0, (drinks.size() + 1) * (VolumeLimit + 1));
+
+	// Because the max sitification depends on two variables:
+	// 1. The Nth item
+	// 2. The volumn
+	// So the question is to get every Nth max satification depending on how many volumes we still have, N is increasing, V is decreasing
+	// The transforming formula is 
+	// MS[i][j] = max { MS[i-1][j] /*if i was not selected*/,    MS[i-1][j - k*V[i]] + k*S[i]}
+	// It is MS[i][j] = max {MS[i-1][j - k*V[i]] + k*S[i]} if k is [0, N[i]]
+
+	for (int i = 0; i <= drinks.size(); i++)
+	{
+		for (int j = VolumeLimit; j >= 0; j--)
+		{
+			if (i == 0 || j == 0) 
+			{
+				MS[i][j] = 0;
+				break;
+			}
+
+			int max = 0;
+			int recordK = 0;
+			int currentDrink = i - 1;
+
+			for (int k = 0; k <= drinks[currentDrink].max_amount; k++)
+			{
+				int tmp = 0;
+				
+				if (j < k * drinks[currentDrink].volume) break;
+				else 
+				{
+					tmp = MS[i - 1][j - k * drinks[currentDrink].volume] + (k * drinks[currentDrink].satification);
+					if (tmp > max) 
+					{
+						max = tmp;
+						recordK = k;
+					}
+				}
+			}
+
+			MS[i][j] = max;
+			path[i][j] = recordK;
+		}
+	}
+
+	// Print max satification
+	std::cout << "Max Satification: " << MS[drinks.size()][VolumeLimit] << std::endl;
+
+	// Print MS
+	for (int i = 0; i <= drinks.size(); i++)
+	{
+		for (int j=0; j <= VolumeLimit; j++)
+		{
+			std::cout << MS[i][j] << "  ";
+		}
+		std::cout << std::endl;
+	}
+
+	// Print the path
+	int j = VolumeLimit;
+	for(int i = drinks.size(); i >= 0; i--)
+	{
+		int currentDrink = i - 1;
+		if (j >= 0 && currentDrink >= 0)
+		{
+			std::cout << drinks[currentDrink].name << ": " << path[i][j] << std::endl;
+			j = j - path[i][j] * drinks[currentDrink].volume;
+		}
+	}
+
+	// Dont forget to delete the space in heap
+	delete []MS;
+	delete []path;
 }
 
 int main()
