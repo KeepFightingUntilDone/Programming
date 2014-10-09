@@ -20,7 +20,7 @@ bool isPalindrome(const char* h, const char* t)
 	return true;
 }
 
-string longestPalindrome(string s)
+string LongestPalindrome_Wrong(string s)
 {
 	if (s.size() == 0 || s.size() == 1) return s;
 
@@ -41,69 +41,74 @@ string longestPalindrome(string s)
 string LongestPalindrome(string str)
 {
     int i, j, max;
-    if (str.size() <= 1)
-        return str;
+
     max = 0;
 	string substr;
 	const char* s = str.c_str();
 	int n = str.size();
 
-    for (i = 0; i < n; ++i) { // i is the middle point of the palindrome  
-        for (j = 0; (i - j >= 0) && (i + j < n); ++j) // if the length of the palindrome is odd  
-        if (s[i - j] != s[i + j])
-            break;
-		j--;
+    for (i = 0; i < n; ++i) 
+	{ 
+		// i is the middle point of the palindrome  
+
+		// if the length of the palindrome is odd 
+		int j = 1;
+		while (i - j >= 0 && i + j < n && s[i - j] == s[i + j])
+			j ++;
+		j --;
         if (j * 2 + 1 > max)
 		{
             max = j * 2 + 1;
 			substr = str.substr(i-j, max);
 		}
 
-        for (j = 0; (i - j >= 0) && (i + j + 1 < n); ++j) // for the even case  
-        if (s[i - j] != s[i + j + 1])
-            break;
-		j--;
-        if (j * 2 + 2 > max)
+		// if the length of the palindrome is even
+		j = 0;
+		while (i - j >= 0 && i + j + 1 < n && s[i - j] == s[i + j + 1])
+			j ++;
+		j --;
+		if (j * 2 + 2 > max)
 		{
             max = j * 2 + 2;
 			substr = str.substr(i-j, max);
 		}
     }
-    //return max;
 	return substr;
 }
 
+/*
 int main()
 {
 	string input;
 	
-/*
 	input = "aabaa";
-	cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
 	input = "aabbaa";
-	cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
 	input = "aabba";
-	cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
 	input = "baabb";
-	cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
 	input = "aa";
-	cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
 	input = "a";
-	cout<<longestPalindrome(input)<<endl;
-*/
+	cout<<LongestPalindrome(input)<<endl;
+
 	input = "ccd";
-	cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
 	input = "abcdce";
-	//cout<<longestPalindrome(input)<<endl;
+	cout<<LongestPalindrome(input)<<endl;
 
-	cout<<LongestPalindrome(input.c_str())<<endl;
+	input ="aaa";
+	cout<<LongestPalindrome(input)<<endl;
 	
 	system("pause");
 	return 0;
 }
+*/

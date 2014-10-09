@@ -65,6 +65,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LongestPalindromeSubstring.cpp" />
+    <ClCompile Include="stloperations.cpp" />
     <ClCompile Include="StringRevert.cpp" />
     <ClCompile Include="Substring.cpp" />
   </ItemGroup>
