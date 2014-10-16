@@ -221,6 +221,27 @@ void SetOperations()
 	cout<<testSet.size()<<endl;
 }
 
+void StringOperations()
+{
+	string testString ("nishishui,woshinidie");
+	//string str ("needle");
+	string str = "nidie";
+
+	//find
+	size_t found = testString.find(str);
+	if (found != string::npos)
+		cout<<"first thing found at: "<<found<<'\n';
+	else 
+		cout<<"did not find anything anywhere"<<endl;
+
+	//substring
+	string substr = testString.substr(found, testString.size() - found);   
+	cout<<substr<<endl;
+	//same with above
+	substr = testString.substr(found);
+	cout<<substr<<endl;
+}
+
 int main()
 {
 	//StackOperations();
@@ -229,7 +250,8 @@ int main()
 	//VectorOperations();
 	//MapOperations();
 	//HashMapOperations();
-	SetOperations();
+	//SetOperations();
+	StringOperations();
 
 	system("pause");
 }
