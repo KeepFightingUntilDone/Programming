@@ -1,0 +1,7 @@
+wordpress linux threads:
+
+pthread_mutex_lock
+pthread_mutex_unlock
+
+pthread_condition_wait
+pthread_condition_signal

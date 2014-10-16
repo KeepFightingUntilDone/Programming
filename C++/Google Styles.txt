@@ -1,0 +1,91 @@
+http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml 
+
+Names and Order of Includes
+	1. dir2/foo2.h (preferred location — see details below).
+	2. C system files.
+	3. C++ system files.
+	4. Other libraries' .h files.
+	5. Your project's .h files.
+
+	#include "foo/public/fooserver.h"  // Preferred location.
+
+	#include <sys/types.h>
+	#include <unistd.h>
+	#include <hash_map>
+	#include <vector>
+
+	#include "base/basictypes.h"
+	#include "base/commandlineflags.h"
+	#include "foo/public/bar.h"
+
+Namespaces: 
+	1. Do not use a using-directive
+
+Local Variables:
+	1. int j = g();  // Good -- declaration has initialization.
+	2. vector<int> v = {1, 2};  // Good -- v starts initialized.
+	3. Note that gcc implements for (int i = 0; i < 10; ++i) correctly 
+	4. for (int i = 0; i < 1000000; ++i) { Foo f;  // get called 1000000 times each}
+
+Explicit Constructors:  
+	1. We require all single argument constructors to be explicit. Always put explicit in front of one-argument constructors in the class definition: explicit Foo(string name);
+
+Copy Constructors:
+	1. Provide a copy constructor and assignment operator only when necessary. Otherwise, disable them with DISALLOW_COPY_AND_ASSIGN.  (put them in private zone)
+
+Smart Pointers:
+	1. Do not use scoped_ptr in new code unless you need to be compatible with older versions of C++. Never use linked_ptr or std::auto_ptr. In all three cases, use std::unique_ptr instead
+	2. Do not design your code to use shared ownership without a very good reason.  If you do use shared ownership, prefer to use shared_ptr. 
+
+Reference Arguments: 
+	1. All parameters passed by reference must be labeled const
+
+RTTI (Runtime Type Information) and Exceptions: 
+	1. Google does not use them
+
+Casting: 
+	1. Use C++ casts like static_cast<>(). Do not use other cast formats like int y = (int)x; or int y = int(x);
+
+Preincrement and Predecrement: 
+	1. Use prefix form (++i) of the increment and decrement operators with iterators and other template objects
+
+Const: 
+	1. Use const whenever it makes sense
+
+Integer Types:
+	1. Use int, int16_t, int64_t. 
+	2. Do not use the unsigned integer types such as uint32_t, unless there is a valid reason
+
+NULL:
+	1. Use 0 for integers, 0.0 for reals, nullptr (or NULL) for pointers, and '\0' for chars
+
+sizeof:
+	1. Prefer sizeof(varname) to sizeof(type). 
+
+Brace Initialization:
+	1. You may use brace initialization. int array[3] = {1, 2, 3};
+
+Naming:
+	1. Function names, variable names, and filenames should be descriptive; eschew abbreviation
+		int price_count_reader;    // No abbreviation.
+		int num_errors;            // "num" is a widespread convention.
+		int num_dns_connections;   // Most people know what "DNS" stands for.
+
+		int n;                     // Meaningless.
+		int nerr;                  // Ambiguous abbreviation.
+		int n_comp_conns;          // Ambiguous abbreviation.
+		int wgc_connections;       // Only your group knows what this stands for.
+		int pc_reader;             // Lots of things can be abbreviated "pc".
+		int cstmr_id;              // Deletes internal letters.
+
+	2. Type names: Type names start with a capital letter and have a capital letter for each new word, with no underscores: MyExcitingClass, MyExcitingEnum
+
+	3. Class memeber variables: have trailing underscores. For instance: my_exciting_member_variable_
+
+	4. Struct member Variables: should be named like regular variables without the trailing underscores, like num_entries
+
+	5. Constant names: Use a k followed by mixed case: kDaysInAWeek
+
+	6. Function names: Functions should start with a capital letter and have a capital letter for each new word. No underscores, like AddTableEntry()
+
+	7. Get/Set functions: int num_entries() const { return num_entries_; }

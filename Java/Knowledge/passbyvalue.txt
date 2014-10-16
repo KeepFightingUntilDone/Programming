@@ -1,0 +1,31 @@
+int test(Object i)
+{
+	i.a = 3;
+}
+
+int main()
+{
+	Object j = new Object();
+	j.a = 1;
+	test(j);
+	//print j.a  =====>  3;
+}
+ 
+
+------------------
+
+int test(int i)
+{
+	i = 3;
+}
+
+int main()
+{
+	int j = 1;
+	test(j);
+	//print j   ======> 1;
+}
+
+
+Basic type is passed by value, and it's value will not be freshed back to it'r oginial value
+But class type is not
